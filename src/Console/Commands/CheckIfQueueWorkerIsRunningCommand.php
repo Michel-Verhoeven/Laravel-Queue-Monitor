@@ -28,7 +28,7 @@ class CheckIfQueueWorkerIsRunningCommand extends Command
 
         $process->setTimeout(null)->run($captureOutput);
 
-        if (str_contains($processOutput, 'php artisan queue:work') || str_contains($processOutput, 'php artisan queue:listen')) {
+        if (str_contains($processOutput, 'queue:work') || str_contains($processOutput, 'queue:listen')) {
             $this->info('Queue worker is running.');
 
             return Command::SUCCESS;
