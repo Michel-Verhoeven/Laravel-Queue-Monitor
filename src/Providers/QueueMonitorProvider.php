@@ -9,6 +9,7 @@ use Illuminate\Queue\Events\JobProcessing;
 use Illuminate\Queue\QueueManager;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use romanzipp\QueueMonitor\Console\Commands\CheckIfQueueWorkerIsRunningCommand;
 use romanzipp\QueueMonitor\Console\Commands\MarkJobsAsStaleCommand;
 use romanzipp\QueueMonitor\Console\Commands\PurgeOldMonitorsCommand;
 use romanzipp\QueueMonitor\Models\Monitor;
@@ -40,6 +41,8 @@ class QueueMonitorProvider extends ServiceProvider
                 PurgeOldMonitorsCommand::class,
             ]);
         }
+
+        $this->commands([CheckIfQueueWorkerIsRunningCommand::class]);
 
         $this->loadViewsFrom(
             __DIR__ . '/../../views',

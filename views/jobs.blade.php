@@ -18,7 +18,7 @@
             @lang('Queue Monitor')
         </h1>
         <div class="w-[24rem] px-4 text-sm text-gray-700 font-light">
-            Statistics
+            Status & Statistics
         </div>
     </nav>
 
@@ -55,6 +55,7 @@
         </article>
 
         <aside class="flex flex-col gap-4 w-[24rem] p-4">
+            @include('queue-monitor::partials.worker-status-card', [$queue_worker_status])
             @foreach($metrics->all() as $metric)
                 @include('queue-monitor::partials.metrics-card', [
                     'metric' => $metric,

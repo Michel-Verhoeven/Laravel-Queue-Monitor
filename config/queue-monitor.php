@@ -40,6 +40,9 @@ return [
         // Allow purging all monitor entries.
         'allow_purge' => true,
 
+        // show current queue worker status (active / inactive)
+        'show_queue_worker_status' => true,
+
         'show_metrics' => true,
 
         // Time frame used to calculate metrics values (in days).

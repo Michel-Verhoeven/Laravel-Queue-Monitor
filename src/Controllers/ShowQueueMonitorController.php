@@ -5,6 +5,7 @@ namespace romanzipp\QueueMonitor\Controllers;
 use Carbon\Carbon;
 use Illuminate\Database\SqlServerConnection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use romanzipp\QueueMonitor\Controllers\Payloads\Metric;
@@ -80,6 +81,7 @@ class ShowQueueMonitorController
             'queues' => $queues,
             'metrics' => $metrics,
             'statuses' => MonitorStatus::toNamedArray(),
+            'queue_worker_status' => config('queue-monitor.ui.show_queue_worker_status') ? Artisan::call('queue-monitor:worker-status') : null,
         ]);
     }
 
